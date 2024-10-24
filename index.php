@@ -14,14 +14,33 @@
 <body>
 
 	<ul>
-		<li><a href="#">études</a></li>
-		<li><a href="formation.html">formations</a></li>
-		<li><a href="contact.html">contact</a></li>
+		<li><a href="index.php?page=1">études</a></li>
+		<li><a href="index.php?page=2">formations</a></li>
+		<li><a href="index.php?page=3">contact</a></li>
 		
 	</ul>
 	<main>
 		<h1><span aria-hidden="true">🧑‍💻</span> EDW portfolio - développeur</h1>
-
+        <?php
+            #code d'appel GET
+            if(isset($_GET['page'])){
+                print "Numero de page : ".$_GET['page'];
+            }
+            # condition imbriquee
+            $views = $_GET['page'];
+            if($views == 1){
+                include_once __DIR__.'/views/presentation.html';
+            }
+            if($views == 2){
+                include_once __DIR__.'/views/formation.html';
+            }
+            if($views == 3){
+                include_once __DIR__.'/views/contact.html';
+            }
+            else if($views >=3 || $views <= 0){
+                print "<p> La page n'existe pas</p>";
+            }
+        ?>
 	
 <!-- 			
 <section>
